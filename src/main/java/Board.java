@@ -7,7 +7,7 @@ public class Board {
     private int tilesCleared = 0;
     private final int x;
     private final int y;
-    private Tile[][] board;
+    private Tile[][] gameBoard;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -21,28 +21,28 @@ public class Board {
 
     public void createBoard() {
 
-        this.board = new Tile[y][x];
+        this.gameBoard = new Tile[y][x];
 
         for (int i = 0; i < y; i++) {
             for (int j = 0; j < x; j++) {
-                this.board[i][j] = new Tile(i, j);
+                this.gameBoard[i][j] = new Tile(i, j);
             }
         }
 
         //For each square, set touching - if null skip
-        for(Tile[] row : this.board){
+        for(Tile[] row : this.gameBoard){
             for(Tile tile : row){
                 int tileX = tile.getX();
                 int tileY = tile.getY();
 
-                if (checkValue(tileX-1, tileY-1)) { tile.setUpleft(this.board[tileX-1][tileY-1]); }
-                if (checkValue(tileX, tileY-1)) { tile.setUp(this.board[tileX][tileY-1]); }
-                if (checkValue(tileX+1, tileY-1)) { tile.setUpright(this.board[tileX+1][tileY-1]); }
-                if (checkValue(tileX-1, tileY)) { tile.setLeft(this.board[tileX-1][tileY]); }
-                if (checkValue(tileX+1, tileY)) { tile.setRight(this.board[tileX+1][tileY]); }
-                if (checkValue(tileX-1, tileY+1)) { tile.setDownleft(this.board[tileX-1][tileY+1]); }
-                if (checkValue(tileX, tileY+1)) { tile.setDown(this.board[tileX][tileY+1]); }
-                if (checkValue(tileX+1, tileY+1)) { tile.setDownright(this.board[tileX+1][tileY+1]); }
+                if (checkValue(tileX-1, tileY-1)) { tile.setUpleft(this.gameBoard[tileX-1][tileY-1]); }
+                if (checkValue(tileX, tileY-1)) { tile.setUp(this.gameBoard[tileX][tileY-1]); }
+                if (checkValue(tileX+1, tileY-1)) { tile.setUpright(this.gameBoard[tileX+1][tileY-1]); }
+                if (checkValue(tileX-1, tileY)) { tile.setLeft(this.gameBoard[tileX-1][tileY]); }
+                if (checkValue(tileX+1, tileY)) { tile.setRight(this.gameBoard[tileX+1][tileY]); }
+                if (checkValue(tileX-1, tileY+1)) { tile.setDownleft(this.gameBoard[tileX-1][tileY+1]); }
+                if (checkValue(tileX, tileY+1)) { tile.setDown(this.gameBoard[tileX][tileY+1]); }
+                if (checkValue(tileX+1, tileY+1)) { tile.setDownright(this.gameBoard[tileX+1][tileY+1]); }
             }
         }
 
@@ -51,7 +51,7 @@ public class Board {
         for (int i = 0; i <= ((x * y) / 8); i++) {
             boolean placed;
             do {
-                placed = setBomb(this.board[randomGenerator.nextInt(x - 1)][randomGenerator.nextInt(x - 1)]);
+                placed = setBomb(this.gameBoard[randomGenerator.nextInt(x - 1)][randomGenerator.nextInt(x - 1)]);
             }
             while (!placed);
         }
@@ -62,64 +62,54 @@ public class Board {
         int min = 0;
 
         return tileX >= min && tileX <= max && tileY >= min && tileY <= max;
-
-
-        /*
-        if(tileX < min || tileX > max){
-            return false;
-        }
-        if(tileY < min || tileY > max){
-            return false;
-        }
-*/
     }
 
     public void hit(int x, int y, boolean bulk) {
-        if(this.board[x][y].isClear()){
+        if(this.gameBoard[x][y].isClear()){
             if(!bulk) {
                 System.out.println("Already clear");
             }
-        } else if (this.board[x][y].isFlagged()){
+        } else if (this.gameBoard[x][y].isFlagged()){
             if(!bulk) {
                 System.out.println("Cannot clear a flag");
             }
-        } else if (this.board[x][y].isBomb()){
+        } else if (this.gameBoard[x][y].isBomb()){
             this.setGameOver();
-        } else if (this.board[x][y].getTouching() > 0) {
+        } else if (this.gameBoard[x][y].getTouching() > 0) {
             tilesCleared++;
-            this.board[x][y].setClear();
+            this.gameBoard[x][y].setClear();
             checkVictory();
-        } else if (this.board[x][y].getTouching() == 0) {
-            this.board[x][y].setClear();
+        } else if (this.gameBoard[x][y].getTouching() == 0) {
+            this.gameBoard[x][y].setClear();
             tilesCleared++;
-            traverseTile(this.board[x][y]);
+            traverseTile(this.gameBoard[x][y]);
             checkVictory();
         }
     }
 
     public void bulk(int x, int y) {
-        if (this.board[x][y].getUpleft() != null) { this.hit(this.board[x][y].getUpleft().getX(), this.board[x][y].getUpleft().getY(), true); }
-        if (this.board[x][y].getUp() != null) { this.hit(this.board[x][y].getUp().getX(), this.board[x][y].getUp().getY(), true); }
-        if (this.board[x][y].getUpright() != null) { this.hit(this.board[x][y].getUpright().getX(), this.board[x][y].getUpright().getY(), true); }
+        if (this.gameBoard[x][y].getUpleft() != null) { this.hit(this.gameBoard[x][y].getUpleft().getX(), this.gameBoard[x][y].getUpleft().getY(), true); }
+        if (this.gameBoard[x][y].getUp() != null) { this.hit(this.gameBoard[x][y].getUp().getX(), this.gameBoard[x][y].getUp().getY(), true); }
+        if (this.gameBoard[x][y].getUpright() != null) { this.hit(this.gameBoard[x][y].getUpright().getX(), this.gameBoard[x][y].getUpright().getY(), true); }
 
-        if (this.board[x][y].getLeft() != null) { this.hit(this.board[x][y].getLeft().getX(), this.board[x][y].getLeft().getY(), true); }
-        if (this.board[x][y].getRight() != null) { this.hit(this.board[x][y].getRight().getX(), this.board[x][y].getRight().getY(), true); }
+        if (this.gameBoard[x][y].getLeft() != null) { this.hit(this.gameBoard[x][y].getLeft().getX(), this.gameBoard[x][y].getLeft().getY(), true); }
+        if (this.gameBoard[x][y].getRight() != null) { this.hit(this.gameBoard[x][y].getRight().getX(), this.gameBoard[x][y].getRight().getY(), true); }
 
-        if (this.board[x][y].getDownleft() != null) { this.hit(this.board[x][y].getDownleft().getX(), this.board[x][y].getDownleft().getY(), true); }
-        if (this.board[x][y].getDown() != null) { this.hit(this.board[x][y].getDown().getX(), this.board[x][y].getDown().getY(), true); }
-        if (this.board[x][y].getDownright() != null) { this.hit(this.board[x][y].getDownright().getX(), this.board[x][y].getDownright().getY(), true); }
+        if (this.gameBoard[x][y].getDownleft() != null) { this.hit(this.gameBoard[x][y].getDownleft().getX(), this.gameBoard[x][y].getDownleft().getY(), true); }
+        if (this.gameBoard[x][y].getDown() != null) { this.hit(this.gameBoard[x][y].getDown().getX(), this.gameBoard[x][y].getDown().getY(), true); }
+        if (this.gameBoard[x][y].getDownright() != null) { this.hit(this.gameBoard[x][y].getDownright().getX(), this.gameBoard[x][y].getDownright().getY(), true); }
     }
 
     public void autoClear(int x, int y) {
-        if (!this.board[x][y].isFlagged() && !this.board[x][y].checkBomb() && this.board[x][y].getTouching() > 0) {
-            this.board[x][y].setClear();
+        if (!this.gameBoard[x][y].isFlagged() && !this.gameBoard[x][y].checkBomb() && this.gameBoard[x][y].getTouching() > 0) {
+            this.gameBoard[x][y].setClear();
             tilesCleared++;
             checkVictory();
-        } else if (!this.board[x][y].isFlagged() && !this.board[x][y].checkBomb() && this.board[x][y].getTouching() == 0) {
-            this.board[x][y].setClear();
+        } else if (!this.gameBoard[x][y].isFlagged() && !this.gameBoard[x][y].checkBomb() && this.gameBoard[x][y].getTouching() == 0) {
+            this.gameBoard[x][y].setClear();
             tilesCleared++;
             checkVictory();
-            traverseTile(this.board[x][y]);
+            traverseTile(this.gameBoard[x][y]);
         }
     }
 
@@ -187,7 +177,7 @@ public class Board {
     }
 
     public Tile[][] getBoard() {
-        return this.board;
+        return this.gameBoard;
     }
 
     public int getX() {
@@ -230,7 +220,7 @@ public class Board {
         // Outputs the board (with each row getting a numerical indicator on the side)
         System.out.print("\n");
         num = 1;
-        for (Tile[] j : this.board) {
+        for (Tile[] j : this.gameBoard) {
 
             if(num < 10){
                 System.out.print(0);
@@ -270,7 +260,7 @@ public class Board {
     }
 
     public void flagAllBombs() {
-        for(Tile[] row : this.board) {
+        for(Tile[] row : this.gameBoard) {
             for (Tile tile : row) {
                 if (tile.checkBomb()) {
                     tile.setValue("X");

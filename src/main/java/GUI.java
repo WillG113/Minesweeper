@@ -8,7 +8,7 @@ import static java.awt.BorderLayout.*;
 public class GUI extends JFrame {
     private JButton restartButton;
     private final JLabel winLabel = new JLabel("");
-    
+
         public GUI(int x, int y) {
             startGame(x, y);
         }
@@ -166,10 +166,10 @@ public class GUI extends JFrame {
             }
         }
 
-        public void flagAllBombs(JButton[][] buttonArray, Board test) {
-            for(int i = 0; i < test.getX(); i++) {
-                for(int j = 0; j < test.getX(); j++) {
-                    if(test.getBoard()[i][j].checkBomb()) {
+        public void flagAllBombs(JButton[][] buttonArray, Board gameBoard) {
+            for(int i = 0; i < gameBoard.getX(); i++) {
+                for(int j = 0; j < gameBoard.getX(); j++) {
+                    if(gameBoard.getBoard()[i][j].checkBomb()) {
                         buttonArray[i][j].setBackground(Color.RED);
                         buttonArray[i][j].setForeground(Color.BLACK);
                     }
