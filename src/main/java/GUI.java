@@ -27,6 +27,7 @@ public class GUI extends JFrame {
 
             JLabel label= new JLabel("Minesweeper");
             label.setHorizontalAlignment(JLabel.CENTER);
+            label.setFont(new Font("Serif", Font.BOLD, 30));
             labelContainer.add(label, PAGE_START);
 
             winLabel.setText("");
@@ -64,6 +65,7 @@ public class GUI extends JFrame {
 
                     @Override
                     public void mouseClicked(MouseEvent e) {
+                        //NOT NEEDED
                     }
 
                     @Override
@@ -78,7 +80,7 @@ public class GUI extends JFrame {
                             if (!gameBoard.getBoard()[l][m].isClear()) {
                                 if (gameBoard.getBoard()[l][m].isFlagged()) {
                                     button.setBackground(Color.YELLOW);
-                                    button.setForeground(Color.WHITE);
+                                    button.setForeground(Color.BLACK);
                                     button.setText("F");
                                 } else {
                                     button.setBackground(Color.BLACK);
@@ -97,14 +99,17 @@ public class GUI extends JFrame {
 
                     @Override
                     public void mouseReleased(MouseEvent e) {
+                        //NOT NEEDED
                     }
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
+                        //NOT NEEDED
                     }
 
                     @Override
                     public void mouseExited(MouseEvent e) {
+                        //NOT NEEDED
                     }
                 });
                 buttonPane.add(button);
@@ -116,7 +121,7 @@ public class GUI extends JFrame {
                 }
             }
 
-            panel.add(buttonPane, CENTER);
+            panel.add(buttonPane, javax.swing.SwingConstants.CENTER);
             panel.add(restartButton, PAGE_END);
             restartButton.setVisible(false);
         }

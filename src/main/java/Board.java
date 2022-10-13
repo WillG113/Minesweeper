@@ -88,6 +88,17 @@ public class Board {
     }
 
     public void bulk(int x, int y) {
+
+        /* Attempting new method
+        for(int yIterator = -1; yIterator <= 1; yIterator++){
+            for(int xIterator = -1; xIterator <= 1; xIterator++){
+                if(x+xIterator >= 0 && x+xIterator <= this.getX() && y+yIterator >= 0 && y+yIterator <= this.getX()) {
+                    this.hit(x+xIterator, y+yIterator, true);
+                }
+            }
+        }
+        */
+
         if (this.gameBoard[x][y].getUpleft() != null) { this.hit(this.gameBoard[x][y].getUpleft().getX(), this.gameBoard[x][y].getUpleft().getY(), true); }
         if (this.gameBoard[x][y].getUp() != null) { this.hit(this.gameBoard[x][y].getUp().getX(), this.gameBoard[x][y].getUp().getY(), true); }
         if (this.gameBoard[x][y].getUpright() != null) { this.hit(this.gameBoard[x][y].getUpright().getX(), this.gameBoard[x][y].getUpright().getY(), true); }
@@ -98,6 +109,7 @@ public class Board {
         if (this.gameBoard[x][y].getDownleft() != null) { this.hit(this.gameBoard[x][y].getDownleft().getX(), this.gameBoard[x][y].getDownleft().getY(), true); }
         if (this.gameBoard[x][y].getDown() != null) { this.hit(this.gameBoard[x][y].getDown().getX(), this.gameBoard[x][y].getDown().getY(), true); }
         if (this.gameBoard[x][y].getDownright() != null) { this.hit(this.gameBoard[x][y].getDownright().getX(), this.gameBoard[x][y].getDownright().getY(), true); }
+
     }
 
     public void autoClear(int x, int y) {
@@ -117,13 +129,28 @@ public class Board {
 
         if(!target.checkBomb()) {
 
+            /* Attempting new method
+            int x = target.getX();
+            int y = target.getY();
+
+            for(int yIterator = -1; yIterator <= 1; yIterator++){
+                for(int xIterator = -1; xIterator <= 1; xIterator++){
+                    if(xIterator != 0 && yIterator != 0) {
+                        if (x + xIterator >= 0 && x + xIterator <= this.getX() && y + yIterator >= 0 && y + yIterator <= this.getX()) {
+                            this.getBoard()[x + xIterator][y + yIterator].addTouching();
+                        }
+                    }
+                }
+            }
+            */
+
+
             Tile[] neighbours = target.setBomb();
             for (Tile tile : neighbours) {
                 if (tile != null) {
                     tile.addTouching();
                 }
             }
-            //System.out.println("Bomb placed at : " + (target.getX() + 1) + " " + (target.getY() + 1));
             return true;
         } else {
             return false;
@@ -131,6 +158,22 @@ public class Board {
     }
 
     public void traverseTile(Tile target) {
+
+        /* Attempting new method
+        int x = target.getX();
+        int y = target.getY();
+
+        for(int yIterator = -1; yIterator <= 1; yIterator++){
+            for(int xIterator = -1; xIterator <= 1; xIterator++){
+                if(x+xIterator >= 0 && x+xIterator < this.getX() && y+yIterator >= 0 && y+yIterator < this.getX()) {
+                    this.checkTouching(this.getBoard()[x+xIterator][y+yIterator]);
+                }
+            }
+        }
+
+         */
+
+
         if (target.getUpleft() != null) { checkTouching(target.getUpleft()); }
         if (target.getUp() != null) { checkTouching(target.getUp()); }
         if (target.getUpright() != null) { checkTouching(target.getUpright()); }
@@ -139,6 +182,7 @@ public class Board {
         if (target.getDownleft() != null) { checkTouching(target.getDownleft()); }
         if (target.getDown() != null) { checkTouching(target.getDown()); }
         if (target.getDownright() != null) { checkTouching(target.getDownright()); }
+
     }
 
     public void checkTouching(Tile target) {

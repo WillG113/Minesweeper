@@ -24,7 +24,7 @@ public class Main {
 
             GUI gt = new GUI(x, x);
             gt.setPreferredSize(new Dimension(1000, 1000));
-            gt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            gt.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             gt.pack();
             gt.setVisible(true);
 
