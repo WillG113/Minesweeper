@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class Board {
@@ -46,7 +47,7 @@ public class Board {
             }
         }
 
-        Random randomGenerator = new Random();
+        SecureRandom randomGenerator = new SecureRandom();
 
         for (int i = 0; i <= ((x * y) / 8); i++) {
             boolean placed;
@@ -89,16 +90,6 @@ public class Board {
 
     public void bulk(int x, int y) {
 
-        /* Attempting new method
-        for(int yIterator = -1; yIterator <= 1; yIterator++){
-            for(int xIterator = -1; xIterator <= 1; xIterator++){
-                if(x+xIterator >= 0 && x+xIterator <= this.getX() && y+yIterator >= 0 && y+yIterator <= this.getX()) {
-                    this.hit(x+xIterator, y+yIterator, true);
-                }
-            }
-        }
-        */
-
         if (this.gameBoard[x][y].getUpleft() != null) { this.hit(this.gameBoard[x][y].getUpleft().getX(), this.gameBoard[x][y].getUpleft().getY(), true); }
         if (this.gameBoard[x][y].getUp() != null) { this.hit(this.gameBoard[x][y].getUp().getX(), this.gameBoard[x][y].getUp().getY(), true); }
         if (this.gameBoard[x][y].getUpright() != null) { this.hit(this.gameBoard[x][y].getUpright().getX(), this.gameBoard[x][y].getUpright().getY(), true); }
@@ -129,22 +120,6 @@ public class Board {
 
         if(!target.checkBomb()) {
 
-            /* Attempting new method
-            int x = target.getX();
-            int y = target.getY();
-
-            for(int yIterator = -1; yIterator <= 1; yIterator++){
-                for(int xIterator = -1; xIterator <= 1; xIterator++){
-                    if(xIterator != 0 && yIterator != 0) {
-                        if (x + xIterator >= 0 && x + xIterator <= this.getX() && y + yIterator >= 0 && y + yIterator <= this.getX()) {
-                            this.getBoard()[x + xIterator][y + yIterator].addTouching();
-                        }
-                    }
-                }
-            }
-            */
-
-
             Tile[] neighbours = target.setBomb();
             for (Tile tile : neighbours) {
                 if (tile != null) {
@@ -158,21 +133,6 @@ public class Board {
     }
 
     public void traverseTile(Tile target) {
-
-        /* Attempting new method
-        int x = target.getX();
-        int y = target.getY();
-
-        for(int yIterator = -1; yIterator <= 1; yIterator++){
-            for(int xIterator = -1; xIterator <= 1; xIterator++){
-                if(x+xIterator >= 0 && x+xIterator < this.getX() && y+yIterator >= 0 && y+yIterator < this.getX()) {
-                    this.checkTouching(this.getBoard()[x+xIterator][y+yIterator]);
-                }
-            }
-        }
-
-         */
-
 
         if (target.getUpleft() != null) { checkTouching(target.getUpleft()); }
         if (target.getUp() != null) { checkTouching(target.getUp()); }
@@ -314,6 +274,4 @@ public class Board {
 
         printBoard();
     }
-
-
 }
