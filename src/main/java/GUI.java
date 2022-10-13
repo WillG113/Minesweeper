@@ -26,7 +26,7 @@ public class GUI extends JFrame {
         public void startGame(int x, int y) {
             Board test = new Board(x, y);
             test.createBoard();
-            test.printBoard();
+            //test.printBoard();
 
             Container panel = getContentPane();
 
@@ -40,7 +40,7 @@ public class GUI extends JFrame {
             label.setHorizontalAlignment(JLabel.CENTER);
             labelContainer.add(label, PAGE_START);
 
-
+            label2.setText("");
             label2.setHorizontalAlignment(JLabel.CENTER);
             labelContainer.add(label2, PAGE_END);
 
@@ -77,6 +77,14 @@ public class GUI extends JFrame {
                 button.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
+
+                    }
+
+
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             hit(button, l, m, test, buttonArray);
                         }
@@ -87,24 +95,21 @@ public class GUI extends JFrame {
                                 if (test.getBoard()[l][m].isFlagged()) {
                                     button.setBackground(Color.YELLOW);
                                     button.setForeground(Color.WHITE);
+                                    button.setText("F");
                                 } else {
                                     button.setBackground(Color.BLACK);
                                     button.setForeground(Color.WHITE);
+                                    button.setText(".");
                                 }
+                                //test.printBoard();
                                 checkVictory(buttonArray, test);
                             }
                         }
 
                         if (SwingUtilities.isMiddleMouseButton(e)) {
-                            test.bulk(test.getBoard()[l][m].getX(), test.getBoard()[l][m].getX());
+                            //test.bulk(test.getBoard()[l][m].getX(), test.getBoard()[l][m].getX());
                             bulkhit(l, m, buttonArray, test);
                         }
-                    }
-
-
-
-                    @Override
-                    public void mousePressed(MouseEvent e) {
 
                     }
 
@@ -159,7 +164,7 @@ public class GUI extends JFrame {
         } else {
             button.setText(Integer.toString(test.getBoard()[l][m].getTouching()));
         }
-        test.printBoard();
+        //test.printBoard();
         checkVictory(buttonArray, test);
     }
 
@@ -212,14 +217,14 @@ public class GUI extends JFrame {
         }
 
 
-        public void bulkhit(int x, int y, JButton[][] buttonArray, Board test){
+        public void bulkhit(int l, int m, JButton[][] buttonArray, Board test){
             for(int i = -1; i <= 1; i++) {
                 for(int j = -1; j <= 1; j++) {
-                    if (x + i > 0 && x + i < test.getX() && y + j > 0 && y + j < test.getX()) {
-                        if(!test.getBoard()[x+i][y+j].isFlagged() && !test.getBoard()[x+i][y+j].isClear()) {
-                            hit(buttonArray[x+i][y+j], x+1, y+1, test, buttonArray);
+                    if(l+j >= 0 && l+j < test.getX() && m+i >= 0 && m+i < test.getX()) {
+                        if(!buttonArray[l+j][m+i].getText().equals("F") && !test.getBoard()[l+j][m+i].isClear()) {
+                            hit(buttonArray[l+j][m+i], l+j, m+i, test, buttonArray);
                         }
-                        test.printBoard();
+                        //test.printBoard();
 
                         checkVictory(buttonArray, test);
                     }
