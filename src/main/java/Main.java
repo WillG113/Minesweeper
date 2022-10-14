@@ -8,15 +8,16 @@ public class Main {
         Scanner in = new Scanner(System.in);
         boolean restart = true;
 
-        System.out.println("Play via console or gui? c/g");
+        System.out.println("Play via console or gui? enter c/g");
         if(in.nextLine().equals("g")){
 
             boolean validIn = false;
             int x;
             do{
-                System.out.println("What size game would you like to play?");
+                System.out.println("What size game would you like to play? - Max for GUI is 40");
+                System.out.println("e.g enter 10 for a 10x10 board");
                 x = in.nextInt();
-                if(x > 2 && x < 76){
+                if(x > 2 && x <= 40){
                     validIn = true;
                 }
             }
@@ -51,7 +52,8 @@ public class Main {
         int x;
 
         do {
-            System.out.println("Please enter the size of game - Games are square, so enter 10 for 10x10 etc. (Max game size is 75x75 and minimum is 3x3");
+            System.out.println("Please enter the size of game (Max game size is 75x75 and minimum is 3x3");
+            System.out.println("e.g enter 10 for a 10x10 board");
             x = in.nextInt();
             validInput = x >= 3 && x <= 75;
         }
@@ -70,7 +72,7 @@ public class Main {
             } else if (input[0] == 3) {
                 newGame.bulk(input[2], input[1]);
             } else {
-                System.out.println("Please enter a valid input");
+                System.out.println("Invalid Input");
             }
             newGame.printBoard();
         }
@@ -92,7 +94,7 @@ public class Main {
         String[] userInputArray;
 
         do {
-            System.out.println("\nEnter a command and coordinates - first number is horizontal, second is vertical");
+            System.out.println("\nEnter a command and coordinates - first number is column, second is row");
             System.out.println("\nCommand List:");
             System.out.println("clear / c - clears the tile entered (e.g clear 5 3)");
             System.out.println("flag / f - places a flag on the tile entered (e.g flag 2 3)");
@@ -106,15 +108,13 @@ public class Main {
                     validInput = true;
                 }
             } else {
-                System.out.println("Enter a valid input");
+                System.out.println("Invalid Input");
             }
         }
         while(!validInput);
 
-
         String command = userInputArray[0].toLowerCase();
         int action;
-
 
         if (command.equals("clear") || command.equals("c")) {
             action = 1;

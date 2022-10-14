@@ -27,8 +27,12 @@ public class Tile {
         touching++;
     }
 
+    public void setTouching(int touching) {
+        this.touching = touching;
+    }
+
     public Tile[] setBomb(){
-        this.isBomb = true;
+        this.isBomb = !this.isBomb;
         return new Tile[] {upleft, up, upright, left, right, downleft, down, downright};
     }
 

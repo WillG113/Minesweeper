@@ -20,9 +20,7 @@ public class Board {
     }
 
     public void createBoard() {
-
         this.gameBoard = new Tile[y][x];
-
         for (int i = 0; i < y; i++) {
             for (int j = 0; j < x; j++) {
                 this.gameBoard[i][j] = new Tile(i, j);
@@ -48,6 +46,7 @@ public class Board {
 
         SecureRandom randomGenerator = new SecureRandom();
 
+        //According to Google, normal minesweeper is ~12.5% mines
         for (int i = 0; i <= ((x * y) / 8); i++) {
             boolean placed;
             do {
@@ -94,6 +93,7 @@ public class Board {
         if (this.gameBoard[x][y].getUpright() != null) { this.hit(this.gameBoard[x][y].getUpright().getX(), this.gameBoard[x][y].getUpright().getY(), true); }
 
         if (this.gameBoard[x][y].getLeft() != null) { this.hit(this.gameBoard[x][y].getLeft().getX(), this.gameBoard[x][y].getLeft().getY(), true); }
+        this.hit(this.gameBoard[x][x].getX(), this.gameBoard[x][y].getY(), true);
         if (this.gameBoard[x][y].getRight() != null) { this.hit(this.gameBoard[x][y].getRight().getX(), this.gameBoard[x][y].getRight().getY(), true); }
 
         if (this.gameBoard[x][y].getDownleft() != null) { this.hit(this.gameBoard[x][y].getDownleft().getX(), this.gameBoard[x][y].getDownleft().getY(), true); }

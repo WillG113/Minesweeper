@@ -131,24 +131,23 @@ public class GUI extends JFrame {
             panel.removeAll();
         }
 
-    // TODO Add some restart check
 
-    public void hit(JButton button, int l, int m, Board gameBoard, JButton[][] buttonArray){
-        button.setBackground(Color.GRAY);
-        button.setForeground(Color.BLACK);
-        //button.setEnabled(false);
-        gameBoard.hit(l, m, false);
-        if (gameBoard.getBoard()[l][m].checkBomb()) {
-            button.setBackground(Color.RED);
+        public void hit(JButton button, int l, int m, Board gameBoard, JButton[][] buttonArray){
+            button.setBackground(Color.GRAY);
             button.setForeground(Color.BLACK);
-        } else if (gameBoard.getBoard()[l][m].getTouching() == 0) {
-            button.setText("");
-            recursion(l, m, buttonArray, gameBoard);
-        } else {
-            button.setText(Integer.toString(gameBoard.getBoard()[l][m].getTouching()));
+            //button.setEnabled(false);
+            gameBoard.hit(l, m, false);
+            if (gameBoard.getBoard()[l][m].checkBomb()) {
+                button.setBackground(Color.RED);
+                button.setForeground(Color.BLACK);
+            } else if (gameBoard.getBoard()[l][m].getTouching() == 0) {
+                button.setText("");
+                recursion(l, m, buttonArray, gameBoard);
+            } else {
+                button.setText(Integer.toString(gameBoard.getBoard()[l][m].getTouching()));
+            }
+            checkVictory(buttonArray, gameBoard);
         }
-        checkVictory(buttonArray, gameBoard);
-    }
 
         public void recursion(int l, int m, JButton[][] buttonArray, Board test){
             for(int i = -1; i <= 1; i++) {
