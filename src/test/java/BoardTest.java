@@ -118,6 +118,44 @@ public class BoardTest {
 
     @Test
     public void testBulk2() {
+        // No bombs
+        testBoard.createBoard();
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++) {
+                if (testBoard.getBoard()[i][j].checkBomb()) {
+                    testBoard.getBoard()[i][j].setBomb();
+                }
+                Assertions.assertFalse(testBoard.getBoard()[i][j].checkBomb(), "no bombs should be set");
+            }
+        }
+
+        testBoard.setFlag(testBoard.getBoard()[0][0]);
+        testBoard.setFlag(testBoard.getBoard()[0][1]);
+        testBoard.setFlag(testBoard.getBoard()[0][2]);
+        testBoard.setFlag(testBoard.getBoard()[1][0]);
+        testBoard.setFlag(testBoard.getBoard()[1][1]);
+        testBoard.setFlag(testBoard.getBoard()[1][2]);
+        testBoard.setFlag(testBoard.getBoard()[2][0]);
+        testBoard.setFlag(testBoard.getBoard()[2][1]);
+        testBoard.setFlag(testBoard.getBoard()[2][2]);
+
+        testBoard.bulk(1,1);
+
+        Assertions.assertFalse(testBoard.getBoard()[0][0].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[0][1].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[0][2].isClear(), "tile should be cleared in the bulk");
+
+        Assertions.assertFalse(testBoard.getBoard()[1][0].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[1][1].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[1][2].isClear(), "tile should be cleared in the bulk");
+
+        Assertions.assertFalse(testBoard.getBoard()[2][0].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[2][1].isClear(), "tile should be cleared in the bulk");
+        Assertions.assertFalse(testBoard.getBoard()[2][2].isClear(), "tile should be cleared in the bulk");
+    }
+
+    @Test
+    public void testBulk3() {
         // with bombs
         testBoard.createBoard();
         Assertions.assertFalse(testBoard.getGameOver());
@@ -127,7 +165,7 @@ public class BoardTest {
     }
 
     @Test
-    public void testBulk3() {
+    public void testBulk4() {
         // with bombs
         testBoard.createBoard();
         testBoard.setFlag(testBoard.getBoard()[0][0]);
