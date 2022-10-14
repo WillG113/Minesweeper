@@ -320,6 +320,23 @@ public class BoardTest {
         Assertions.assertFalse(testBoard.getBoard()[0][0].isFlagged(), "tile should not be flagged");
     }
 
+
+    @Test
+    public void testSetFlag2() {
+        testBoard.createBoard();
+        for (int i = 0; i <= 2; i++){
+            for (int j = 0; j <= 2; j++) {
+                if (testBoard.getBoard()[i][j].checkBomb()) {
+                    testBoard.getBoard()[i][j].setBomb();
+                }
+                testBoard.getBoard()[i][j].setTouching(0);
+                Assertions.assertFalse(testBoard.getBoard()[i][j].checkBomb(), "no bombs should be set");
+            }
+        }
+        testBoard.hit(0,0, false);
+        testBoard.setFlag(testBoard.getBoard()[0][0]);
+        Assertions.assertFalse(testBoard.getBoard()[0][0].isFlagged());
+    }
     @Test
     public void testCheckVictory() {
 
