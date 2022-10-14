@@ -28,105 +28,106 @@ import java.util.Scanner;
 <span class="nc" id="L28">            gt.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span>
 <span class="nc" id="L29">            gt.pack();</span>
 <span class="nc" id="L30">            gt.setVisible(true);</span>
+<span class="nc" id="L31">            gt.startGame();</span>
 
 
-<span class="nc" id="L33">        } else {</span>
+<span class="nc" id="L34">        } else {</span>
 
             do {
-<span class="nc" id="L36">                gameStart();</span>
+<span class="nc" id="L37">                gameStart();</span>
 
-<span class="nc" id="L38">                System.out.println(&quot;\nPlay again? y/n&quot;);</span>
-<span class="nc" id="L39">                String input = in.nextLine();</span>
+<span class="nc" id="L39">                System.out.println(&quot;\nPlay again? y/n&quot;);</span>
+<span class="nc" id="L40">                String input = in.nextLine();</span>
 
-<span class="nc bnc" id="L41" title="All 2 branches missed.">                if (input.toLowerCase(Locale.ROOT).equals(&quot;n&quot;)) {</span>
-<span class="nc" id="L42">                    restart = false;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                if (input.toLowerCase(Locale.ROOT).equals(&quot;n&quot;)) {</span>
+<span class="nc" id="L43">                    restart = false;</span>
                 }
             }
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            while (restart);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            while (restart);</span>
         }
-<span class="nc" id="L47">    }</span>
+<span class="nc" id="L48">    }</span>
 
     public static void gameStart() {
-<span class="nc" id="L50">        Scanner in = new Scanner(System.in);</span>
+<span class="nc" id="L51">        Scanner in = new Scanner(System.in);</span>
         boolean validInput;
         int x;
 
         do {
-<span class="nc" id="L55">            System.out.println(&quot;Please enter the size of game (Max game size is 75x75 and minimum is 3x3&quot;);</span>
-<span class="nc" id="L56">            System.out.println(&quot;e.g enter 10 for a 10x10 board&quot;);</span>
-<span class="nc" id="L57">            x = in.nextInt();</span>
-<span class="nc bnc" id="L58" title="All 4 branches missed.">            validInput = x &gt;= 3 &amp;&amp; x &lt;= 75;</span>
+<span class="nc" id="L56">            System.out.println(&quot;Please enter the size of game (Max game size is 75x75 and minimum is 3x3&quot;);</span>
+<span class="nc" id="L57">            System.out.println(&quot;e.g enter 10 for a 10x10 board&quot;);</span>
+<span class="nc" id="L58">            x = in.nextInt();</span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">            validInput = x &gt;= 3 &amp;&amp; x &lt;= 75;</span>
         }
-<span class="nc bnc" id="L60" title="All 2 branches missed.">        while(!validInput);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        while(!validInput);</span>
 
-<span class="nc" id="L62">        Board newGame = new Board(x, x);</span>
-<span class="nc" id="L63">        newGame.createBoard();</span>
-<span class="nc" id="L64">        newGame.printBoard();</span>
+<span class="nc" id="L63">        Board newGame = new Board(x, x);</span>
+<span class="nc" id="L64">        newGame.createBoard();</span>
+<span class="nc" id="L65">        newGame.printBoard();</span>
 
         do {
-<span class="nc" id="L67">            int[] input = userInput(newGame.getX());</span>
-<span class="nc bnc" id="L68" title="All 2 branches missed.">            if(input[0] == 1) {</span>
-<span class="nc" id="L69">                newGame.hit(input[2], input[1], false);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">            } else if (input[0] == 2) {</span>
-<span class="nc" id="L71">                newGame.setFlag(newGame.getBoard()[input[2]][input[1]]);</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">            } else if (input[0] == 3) {</span>
-<span class="nc" id="L73">                newGame.bulk(input[2], input[1]);</span>
+<span class="nc" id="L68">            int[] input = userInput(newGame.getX());</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">            if(input[0] == 1) {</span>
+<span class="nc" id="L70">                newGame.hit(input[2], input[1], false);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            } else if (input[0] == 2) {</span>
+<span class="nc" id="L72">                newGame.setFlag(newGame.getBoard()[input[2]][input[1]]);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            } else if (input[0] == 3) {</span>
+<span class="nc" id="L74">                newGame.bulk(input[2], input[1]);</span>
             } else {
-<span class="nc" id="L75">                System.out.println(&quot;Invalid Input&quot;);</span>
+<span class="nc" id="L76">                System.out.println(&quot;Invalid Input&quot;);</span>
             }
-<span class="nc" id="L77">            newGame.printBoard();</span>
+<span class="nc" id="L78">            newGame.printBoard();</span>
         }
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        while(!newGame.getGameOver());</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        while(!newGame.getGameOver());</span>
 
-<span class="nc bnc" id="L81" title="All 2 branches missed.">        if(newGame.victoryState() == 1) {</span>
-<span class="nc" id="L82">            System.out.println(&quot;\nYOU WON! YOU FLAGGED THE MINES&quot;);</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">        } else if (newGame.victoryState() == 2) {</span>
-<span class="nc" id="L84">            System.out.println(&quot;\nYOU WON! YOU CLEARED ALL THE TILES&quot;);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if(newGame.victoryState() == 1) {</span>
+<span class="nc" id="L83">            System.out.println(&quot;\nYOU WON! YOU FLAGGED THE MINES&quot;);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        } else if (newGame.victoryState() == 2) {</span>
+<span class="nc" id="L85">            System.out.println(&quot;\nYOU WON! YOU CLEARED ALL THE TILES&quot;);</span>
         } else {
-<span class="nc" id="L86">            newGame.flagAllBombs();</span>
-<span class="nc" id="L87">            System.out.println(&quot;\nYOU LOST&quot;);</span>
+<span class="nc" id="L87">            newGame.flagAllBombs();</span>
+<span class="nc" id="L88">            System.out.println(&quot;\nYOU LOST&quot;);</span>
         }
-<span class="nc" id="L89">    }</span>
+<span class="nc" id="L90">    }</span>
 
     public static int[] userInput(int x) {
-<span class="nc" id="L92">        Scanner input = new Scanner(System.in);</span>
-<span class="nc" id="L93">        boolean validInput = false;</span>
+<span class="nc" id="L93">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L94">        boolean validInput = false;</span>
         String[] userInputArray;
 
         do {
-<span class="nc" id="L97">            System.out.println(&quot;\nEnter a command and coordinates - first number is column, second is row&quot;);</span>
-<span class="nc" id="L98">            System.out.println(&quot;\nCommand List:&quot;);</span>
-<span class="nc" id="L99">            System.out.println(&quot;clear / c - clears the tile entered (e.g clear 5 3)&quot;);</span>
-<span class="nc" id="L100">            System.out.println(&quot;flag / f - places a flag on the tile entered (e.g flag 2 3)&quot;);</span>
-<span class="nc" id="L101">            System.out.println(&quot;bulk / b - clears a 3x3 of tiles around at the tile entered (e.g bulk 5 3)\n&quot;);</span>
+<span class="nc" id="L98">            System.out.println(&quot;\nEnter a command and coordinates - first number is column, second is row&quot;);</span>
+<span class="nc" id="L99">            System.out.println(&quot;\nCommand List:&quot;);</span>
+<span class="nc" id="L100">            System.out.println(&quot;clear / c - clears the tile entered (e.g clear 5 3)&quot;);</span>
+<span class="nc" id="L101">            System.out.println(&quot;flag / f - places a flag on the tile entered (e.g flag 2 3)&quot;);</span>
+<span class="nc" id="L102">            System.out.println(&quot;bulk / b - clears a 3x3 of tiles around at the tile entered (e.g bulk 5 3)\n&quot;);</span>
 
-<span class="nc" id="L103">            String stringInput = input.nextLine();</span>
-<span class="nc" id="L104">            userInputArray = stringInput.split(&quot; &quot;);</span>
+<span class="nc" id="L104">            String stringInput = input.nextLine();</span>
+<span class="nc" id="L105">            userInputArray = stringInput.split(&quot; &quot;);</span>
 
-<span class="nc bnc" id="L106" title="All 2 branches missed.">            if (userInputArray.length == 3) {</span>
-<span class="nc bnc" id="L107" title="All 4 branches missed.">                if (Integer.parseInt(userInputArray[1]) &lt;= x &amp;&amp; Integer.parseInt(userInputArray[2]) &lt;= x) {</span>
-<span class="nc" id="L108">                    validInput = true;</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (userInputArray.length == 3) {</span>
+<span class="nc bnc" id="L108" title="All 4 branches missed.">                if (Integer.parseInt(userInputArray[1]) &lt;= x &amp;&amp; Integer.parseInt(userInputArray[2]) &lt;= x) {</span>
+<span class="nc" id="L109">                    validInput = true;</span>
                 }
             } else {
-<span class="nc" id="L111">                System.out.println(&quot;Invalid Input&quot;);</span>
+<span class="nc" id="L112">                System.out.println(&quot;Invalid Input&quot;);</span>
             }
         }
-<span class="nc bnc" id="L114" title="All 2 branches missed.">        while(!validInput);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">        while(!validInput);</span>
 
-<span class="nc" id="L116">        String command = userInputArray[0].toLowerCase();</span>
+<span class="nc" id="L117">        String command = userInputArray[0].toLowerCase();</span>
         int action;
 
-<span class="nc bnc" id="L119" title="All 4 branches missed.">        if (command.equals(&quot;clear&quot;) || command.equals(&quot;c&quot;)) {</span>
-<span class="nc" id="L120">            action = 1;</span>
-<span class="nc bnc" id="L121" title="All 4 branches missed.">        } else if (command.equals(&quot;flag&quot;) || command.equals(&quot;f&quot;)) {</span>
-<span class="nc" id="L122">            action = 2;</span>
-<span class="nc bnc" id="L123" title="All 4 branches missed.">        } else if (command.equals(&quot;bulk&quot;) || command.equals(&quot;b&quot;)) {</span>
-<span class="nc" id="L124">            action = 3;</span>
+<span class="nc bnc" id="L120" title="All 4 branches missed.">        if (command.equals(&quot;clear&quot;) || command.equals(&quot;c&quot;)) {</span>
+<span class="nc" id="L121">            action = 1;</span>
+<span class="nc bnc" id="L122" title="All 4 branches missed.">        } else if (command.equals(&quot;flag&quot;) || command.equals(&quot;f&quot;)) {</span>
+<span class="nc" id="L123">            action = 2;</span>
+<span class="nc bnc" id="L124" title="All 4 branches missed.">        } else if (command.equals(&quot;bulk&quot;) || command.equals(&quot;b&quot;)) {</span>
+<span class="nc" id="L125">            action = 3;</span>
         } else {
-<span class="nc" id="L126">            action = 0;</span>
+<span class="nc" id="L127">            action = 0;</span>
         }
 
-<span class="nc" id="L129">        return new int[] {action, Integer.parseInt(userInputArray[1]) - 1, Integer.parseInt(userInputArray[2]) - 1};</span>
+<span class="nc" id="L130">        return new int[] {action, Integer.parseInt(userInputArray[1]) - 1, Integer.parseInt(userInputArray[2]) - 1};</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
