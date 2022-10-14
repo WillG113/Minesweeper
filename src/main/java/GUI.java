@@ -9,11 +9,24 @@ public class GUI extends JFrame {
     private JButton restartButton;
     private final JLabel winLabel = new JLabel("");
 
-        public GUI(int x, int y) {
-            startGame(x, y);
-        }
+    private Board gameBoard;
 
-        public void startGame(int x, int y) {
+    private JButton[][] buttonArray;
+
+
+    public GUI(int x, int y) {
+        startGame(x, y);
+    }
+
+    public Board getGameBoard() {
+        return gameBoard;
+    }
+
+    public JButton[][] getButtonArray() {
+        return buttonArray;
+    }
+
+    public void startGame(int x, int y) {
             Board gameBoard = new Board(x, y);
             gameBoard.createBoard();
 
