@@ -8,14 +8,15 @@ import static java.awt.BorderLayout.*;
 public class GUI extends JFrame {
     private JButton restartButton;
     private final JLabel winLabel = new JLabel("");
-
     private Board gameBoard;
-
     private JButton[][] buttonArray;
+    private int x;
+    private int y;
 
 
     public GUI(int x, int y) {
-        startGame(x, y);
+        this.x = x;
+        this.y = y;
     }
 
     public Board getGameBoard() {
@@ -26,8 +27,10 @@ public class GUI extends JFrame {
         return buttonArray;
     }
 
-    public void startGame(int x, int y) {
-            Board gameBoard = new Board(x, y);
+    public JLabel getWinLabel() { return winLabel; }
+
+    public void startGame() {
+            gameBoard = new Board(x, y);
             gameBoard.createBoard();
 
             Container panel = getContentPane();
@@ -52,11 +55,10 @@ public class GUI extends JFrame {
             restartButton = new JButton("Restart");
             restartButton.addActionListener(e -> {
                 resetGame();
-                startGame(x,y);
+                startGame();
             });
 
-
-            JButton[][] buttonArray = new JButton[gameBoard.getX()][gameBoard.getX()];
+            buttonArray = new JButton[gameBoard.getX()][gameBoard.getX()];
 
             for (int i = 0; i < gameBoard.getX(); i++) {
                 for (int j = 0; j < gameBoard.getX(); j++) {
@@ -89,19 +91,7 @@ public class GUI extends JFrame {
                         }
 
                         if (SwingUtilities.isRightMouseButton(e)) {
-                            gameBoard.setFlag(gameBoard.getBoard()[l][m]);
-                            if (!gameBoard.getBoard()[l][m].isClear()) {
-                                if (gameBoard.getBoard()[l][m].isFlagged()) {
-                                    button.setBackground(Color.YELLOW);
-                                    button.setForeground(Color.BLACK);
-                                    button.setText("F");
-                                } else {
-                                    button.setBackground(Color.BLACK);
-                                    button.setForeground(Color.WHITE);
-                                    button.setText(".");
-                                }
-                                checkVictory(buttonArray, gameBoard);
-                            }
+                            flag(button, l, m);
                         }
 
                         if (SwingUtilities.isMiddleMouseButton(e)) {
@@ -148,7 +138,7 @@ public class GUI extends JFrame {
         public void hit(JButton button, int l, int m, Board gameBoard, JButton[][] buttonArray){
             button.setBackground(Color.GRAY);
             button.setForeground(Color.BLACK);
-            //button.setEnabled(false);
+
             gameBoard.hit(l, m, false);
             if (gameBoard.getBoard()[l][m].checkBomb()) {
                 button.setBackground(Color.RED);
@@ -160,6 +150,22 @@ public class GUI extends JFrame {
                 button.setText(Integer.toString(gameBoard.getBoard()[l][m].getTouching()));
             }
             checkVictory(buttonArray, gameBoard);
+        }
+
+        public void flag(JButton button, int l, int m) {
+            gameBoard.setFlag(gameBoard.getBoard()[l][m]);
+            if (!gameBoard.getBoard()[l][m].isClear()) {
+                if (gameBoard.getBoard()[l][m].isFlagged()) {
+                    button.setBackground(Color.YELLOW);
+                    button.setForeground(Color.BLACK);
+                    button.setText("F");
+                } else {
+                    button.setBackground(Color.BLACK);
+                    button.setForeground(Color.WHITE);
+                    button.setText(".");
+                }
+                checkVictory(buttonArray, gameBoard);
+            }
         }
 
         public void recursion(int l, int m, JButton[][] buttonArray, Board test){

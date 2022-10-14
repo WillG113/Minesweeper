@@ -28,6 +28,7 @@ public class Main {
             gt.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             gt.pack();
             gt.setVisible(true);
+            gt.startGame();
 
 
         } else {
