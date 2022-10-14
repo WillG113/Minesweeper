@@ -7,7 +7,7 @@ public class GUITest {
     GUI test = new GUI(3,3);
 
     @Test
-    public void testGUI() {
+    void testGUI() {
         //Test that arrays are initialised
         test.startGame();
 
@@ -16,7 +16,7 @@ public class GUITest {
     }
 
     @Test
-    public void testHit() {
+    void testHit() {
         test.startGame();
 
         JButton testButton = test.getButtonArray()[0][0];
@@ -34,7 +34,7 @@ public class GUITest {
     }
 
     @Test
-    public void testHit2() {
+    void testHit2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -53,7 +53,7 @@ public class GUITest {
     }
 
     @Test
-    public void testHit3() {
+    void testHit3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -75,7 +75,7 @@ public class GUITest {
     }
 
     @Test
-    public void testHit4() {
+    void testHit4() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -92,34 +92,34 @@ public class GUITest {
 
         test.hit(test.getButtonArray()[0][0], 0, 0, test.getGameBoard(), test.getButtonArray());
 
-        Assertions.assertSame(test.getButtonArray()[0][0].getBackground(), Color.RED);
-        Assertions.assertSame(test.getButtonArray()[0][0].getForeground(), Color.BLACK);
+        Assertions.assertSame(Color.RED, test.getButtonArray()[0][0].getBackground());
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[0][0].getForeground());
     }
 
     @Test
-    public void testFlag() {
+    void testFlag() {
         test.startGame();
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
         Assertions.assertTrue(test.getGameBoard().getBoard()[0][0].isFlagged());
-        Assertions.assertSame(test.getButtonArray()[0][0].getBackground(), Color.YELLOW);
-        Assertions.assertSame(test.getButtonArray()[0][0].getForeground(), Color.BLACK);
+        Assertions.assertSame(Color.YELLOW, test.getButtonArray()[0][0].getBackground());
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[0][0].getForeground());
     }
 
     @Test
-    public void testFlag2() {
+    void testFlag2() {
         test.startGame();
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
         Assertions.assertTrue(test.getGameBoard().getBoard()[0][0].isFlagged());
         test.flag(testButton, 0, 0);
         Assertions.assertFalse(test.getGameBoard().getBoard()[0][0].isFlagged());
-        Assertions.assertSame(test.getButtonArray()[0][0].getBackground(), Color.BLACK);
-        Assertions.assertSame(test.getButtonArray()[0][0].getForeground(), Color.WHITE);
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[0][0].getBackground());
+        Assertions.assertSame(Color.WHITE, test.getButtonArray()[0][0].getForeground());
     }
 
     @Test
-    public void testFlagAllBombs() {
+    void testFlagAllBombs() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -137,20 +137,20 @@ public class GUITest {
         test.getGameBoard().setBomb(test.getGameBoard().getBoard()[2][0]);
 
         test.flagAllBombs(test.getButtonArray(), test.getGameBoard());
-        Assertions.assertSame(test.getButtonArray()[0][0].getBackground(), Color.RED);
-        Assertions.assertSame(test.getButtonArray()[0][0].getForeground(), Color.BLACK);
+        Assertions.assertSame(Color.RED, test.getButtonArray()[0][0].getBackground());
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[0][0].getForeground());
 
         test.flagAllBombs(test.getButtonArray(), test.getGameBoard());
-        Assertions.assertSame(test.getButtonArray()[1][0].getBackground(), Color.RED);
-        Assertions.assertSame(test.getButtonArray()[1][0].getForeground(), Color.BLACK);
+        Assertions.assertSame(Color.RED, test.getButtonArray()[1][0].getBackground());
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[1][0].getForeground());
 
         test.flagAllBombs(test.getButtonArray(), test.getGameBoard());
-        Assertions.assertSame(test.getButtonArray()[2][0].getBackground(), Color.RED);
-        Assertions.assertSame(test.getButtonArray()[2][0].getForeground(), Color.BLACK);
+        Assertions.assertSame(Color.RED, test.getButtonArray()[2][0].getBackground());
+        Assertions.assertSame(Color.BLACK, test.getButtonArray()[2][0].getForeground());
     }
 
     @Test
-    public void testCheckVictory() {
+    void testCheckVictory() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -172,7 +172,7 @@ public class GUITest {
     }
 
     @Test
-    public void testCheckVictory2() {
+    void testCheckVictory2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -199,7 +199,7 @@ public class GUITest {
     }
 
     @Test
-    public void testCheckVictory3() {
+    void testCheckVictory3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -219,7 +219,7 @@ public class GUITest {
     }
 
     @Test
-    public void testBulk() {
+    void testBulk() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -239,7 +239,7 @@ public class GUITest {
     }
 
     @Test
-    public void testBulk2() {
+    void testBulk2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -259,7 +259,7 @@ public class GUITest {
     }
 
     @Test
-    public void testBulk3() {
+    void testBulk3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
