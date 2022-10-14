@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">newMinesweeper</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Tile.java</span></div><h1>Tile.java</h1><pre class="source lang-java linenums">public class Tile {
+
+    private int x;
+    private int y;
+    private Tile left;
+    private Tile right;
+    private Tile up;
+    private Tile down;
+    private Tile upleft;
+    private Tile upright;
+    private Tile downleft;
+    private Tile downright;
+
+    private boolean isBomb;
+<span class="fc" id="L15">    private boolean isFlagged = false;</span>
+    private boolean isClear;
+    private int touching;
+    private String value;
+
+<span class="fc" id="L20">    public Tile(int x, int y) {</span>
+<span class="fc" id="L21">        this.x = x;</span>
+<span class="fc" id="L22">        this.y = y;</span>
+<span class="fc" id="L23">        this.value = &quot;.&quot;;</span>
+<span class="fc" id="L24">    }</span>
+
+    public void addTouching() {
+<span class="fc" id="L27">        touching++;</span>
+<span class="fc" id="L28">    }</span>
+
+    public void setTouching(int touching) {
+<span class="fc" id="L31">        this.touching = touching;</span>
+<span class="fc" id="L32">    }</span>
+
+    public Tile[] setBomb(){
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        this.isBomb = !this.isBomb;</span>
+<span class="fc" id="L36">        return new Tile[] {upleft, up, upright, left, right, downleft, down, downright};</span>
+    }
+
+    public void setLeft(Tile left) {
+<span class="fc" id="L40">        this.left = left;</span>
+<span class="fc" id="L41">    }</span>
+
+    public void setRight(Tile right) {
+<span class="fc" id="L44">        this.right = right;</span>
+<span class="fc" id="L45">    }</span>
+
+    public void setUp(Tile up) {
+<span class="fc" id="L48">        this.up = up;</span>
+<span class="fc" id="L49">    }</span>
+
+    public void setDown(Tile down) {
+<span class="fc" id="L52">        this.down = down;</span>
+<span class="fc" id="L53">    }</span>
+
+    public void setUpleft(Tile upleft) {
+<span class="fc" id="L56">        this.upleft = upleft;</span>
+<span class="fc" id="L57">    }</span>
+
+    public void setUpright(Tile upright) {
+<span class="fc" id="L60">        this.upright = upright;</span>
+<span class="fc" id="L61">    }</span>
+
+    public void setDownleft(Tile downleft) {
+<span class="fc" id="L64">        this.downleft = downleft;</span>
+<span class="fc" id="L65">    }</span>
+
+    public void setDownright(Tile downright) {
+<span class="fc" id="L68">        this.downright = downright;</span>
+<span class="fc" id="L69">    }</span>
+
+    public Tile getLeft() {
+<span class="fc" id="L72">        return left;</span>
+    }
+
+    public Tile getRight() {
+<span class="fc" id="L76">        return right;</span>
+    }
+
+    public Tile getUp() {
+<span class="fc" id="L80">        return up;</span>
+    }
+
+    public Tile getDown() {
+<span class="fc" id="L84">        return down;</span>
+    }
+
+    public Tile getUpleft() {
+<span class="fc" id="L88">        return upleft;</span>
+    }
+
+    public Tile getUpright() {
+<span class="fc" id="L92">        return upright;</span>
+    }
+
+    public Tile getDownleft() {
+<span class="fc" id="L96">        return downleft;</span>
+    }
+
+    public Tile getDownright() {
+<span class="fc" id="L100">        return downright;</span>
+    }
+
+    public void setFlagged() {
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if(this.isFlagged){</span>
+<span class="fc" id="L105">            this.isFlagged = false;</span>
+<span class="fc" id="L106">            this.value = &quot;.&quot;;</span>
+        } else {
+<span class="fc" id="L108">            this.isFlagged = true;</span>
+<span class="fc" id="L109">            this.value = &quot;F&quot;;</span>
+        }
+<span class="fc" id="L111">    }</span>
+
+    public void setClear(){
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        if(this.touching &gt; 0) {</span>
+<span class="fc" id="L115">            this.value = String.valueOf(touching);</span>
+        } else {
+<span class="fc" id="L117">            this.value = &quot; &quot;;</span>
+        }
+<span class="fc" id="L119">        this.isClear = true;</span>
+<span class="fc" id="L120">    }</span>
+
+    public int getX() {
+<span class="fc" id="L123">        return x;</span>
+    }
+
+    public int getY() {
+<span class="fc" id="L127">        return y;</span>
+    }
+
+    public int getTouching() {
+<span class="fc" id="L131">        return touching;</span>
+    }
+
+    public boolean isBomb() {
+<span class="fc" id="L135">        this.value = &quot;X&quot;;</span>
+<span class="fc" id="L136">        return isBomb;</span>
+    }
+
+    public boolean isClear() {
+<span class="fc" id="L140">        return isClear;</span>
+    }
+
+    public boolean isFlagged() {
+<span class="fc" id="L144">        return isFlagged;</span>
+    }
+
+    public String getValue(){
+<span class="fc" id="L148">        return value;</span>
+    }
+
+    public boolean checkBomb() {
+<span class="fc" id="L152">        return isBomb;</span>
+    }
+
+    public boolean checkTile() {
+<span class="pc bpc" id="L156" title="1 of 4 branches missed.">        return !isBomb &amp;&amp; !isClear;</span>
+    }
+
+    public void setValue(String value) {
+<span class="fc" id="L160">        this.value = value;</span>
+<span class="fc" id="L161">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
