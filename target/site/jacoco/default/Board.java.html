@@ -65,7 +65,7 @@ public class Board {
 
     public void hit(int x, int y, boolean bulk) {
 <span class="fc bfc" id="L67" title="All 2 branches covered.">        if(this.gameBoard[x][y].isClear()){</span>
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">            if(!bulk) {</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            if(!bulk) {</span>
 <span class="fc" id="L69">                System.out.println(&quot;Already clear&quot;);</span>
             }
 <span class="fc bfc" id="L71" title="All 2 branches covered.">        } else if (this.gameBoard[x][y].isFlagged()){</span>
@@ -161,7 +161,7 @@ public class Board {
             } else {
 <span class="fc" id="L162">                target.setFlagged();</span>
 <span class="pc bpc" id="L163" title="1 of 2 branches missed.">                if (target.checkBomb()) {</span>
-<span class="fc" id="L164">                    bombsFlagged--;</span>
+<span class="nc" id="L164">                    bombsFlagged--;</span>
                 }
             }
         } else {
