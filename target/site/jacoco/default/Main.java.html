@@ -62,7 +62,7 @@ import java.util.Scanner;
 
 <span class="nc" id="L63">        Board newGame = new Board(x, x);</span>
 <span class="nc" id="L64">        newGame.createBoard();</span>
-<span class="nc" id="L65">        newGame.printBoard();</span>
+        //newGame.printBoard();
 
         do {
 <span class="nc" id="L68">            int[] input = userInput(newGame.getX());</span>
@@ -75,7 +75,7 @@ import java.util.Scanner;
             } else {
 <span class="nc" id="L76">                System.out.println(&quot;Invalid Input&quot;);</span>
             }
-<span class="nc" id="L78">            newGame.printBoard();</span>
+            //newGame.printBoard();
         }
 <span class="nc bnc" id="L80" title="All 2 branches missed.">        while(!newGame.getGameOver());</span>
 

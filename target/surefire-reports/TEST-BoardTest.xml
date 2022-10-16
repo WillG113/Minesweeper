@@ -61,25 +61,25 @@
     <property name="sun.stdout.encoding" value="cp850"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="BoardTest" name="testAutoClear" time="0.045"/>
+  <testcase classname="BoardTest" name="testAutoClear" time="0.048"/>
   <testcase classname="BoardTest" name="testAutoClear2" time="0"/>
-  <testcase classname="BoardTest" name="testAutoClear3" time="0.001"/>
-  <testcase classname="BoardTest" name="testAutoClear4" time="0"/>
-  <testcase classname="BoardTest" name="testHit" time="0.001"/>
+  <testcase classname="BoardTest" name="testAutoClear3" time="0"/>
+  <testcase classname="BoardTest" name="testAutoClear4" time="0.001"/>
+  <testcase classname="BoardTest" name="testHit" time="0"/>
   <testcase classname="BoardTest" name="testCheckValue" time="0"/>
-  <testcase classname="BoardTest" name="testBulk2" time="0"/>
+  <testcase classname="BoardTest" name="testBulk2" time="0.001"/>
   <testcase classname="BoardTest" name="testBulk3" time="0"/>
-  <testcase classname="BoardTest" name="testBulk4" time="0.001"/>
+  <testcase classname="BoardTest" name="testBulk4" time="0"/>
   <testcase classname="BoardTest" name="testCreateBoard" time="0.002"/>
   <testcase classname="BoardTest" name="testBulk" time="0"/>
-  <testcase classname="BoardTest" name="testHit2" time="0"/>
-  <testcase classname="BoardTest" name="testHit3" time="0.003"/>
-  <testcase classname="BoardTest" name="testFlagAllBombs" time="0.006"/>
+  <testcase classname="BoardTest" name="testHit2" time="0.001"/>
+  <testcase classname="BoardTest" name="testHit3" time="0.002"/>
+  <testcase classname="BoardTest" name="testFlagAllBombs" time="0.002"/>
   <testcase classname="BoardTest" name="testBoardConstructor" time="0"/>
-  <testcase classname="BoardTest" name="testCheckVictory" time="0"/>
+  <testcase classname="BoardTest" name="testCheckVictory" time="0.001"/>
   <testcase classname="BoardTest" name="testSetBomb" time="0"/>
   <testcase classname="BoardTest" name="testSetFlag" time="0"/>
-  <testcase classname="BoardTest" name="testCreateBoard2" time="0.001"/>
+  <testcase classname="BoardTest" name="testCreateBoard2" time="0.002"/>
   <testcase classname="BoardTest" name="testSetBomb2" time="0"/>
   <testcase classname="BoardTest" name="testSetFlag2" time="0"/>
 </testsuite>

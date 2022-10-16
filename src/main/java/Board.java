@@ -271,6 +271,6 @@ public class Board {
             }
         }
 
-        printBoard();
+        //printBoard();
     }
 }

@@ -62,7 +62,7 @@ public class Main {
 
         Board newGame = new Board(x, x);
         newGame.createBoard();
-        newGame.printBoard();
+        //newGame.printBoard();
 
         do {
             int[] input = userInput(newGame.getX());
@@ -75,7 +75,7 @@ public class Main {
             } else {
                 System.out.println("Invalid Input");
             }
-            newGame.printBoard();
+            //newGame.printBoard();
         }
         while(!newGame.getGameOver());
 
