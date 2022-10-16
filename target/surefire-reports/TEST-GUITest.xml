@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="MainTest" time="0" errors="0" skipped="0">
+<testsuite tests="14" failures="0" name="GUITest" time="0.196" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="18.0.2.1+1-1"/>
@@ -62,5 +62,18 @@
     <property name="sun.stdout.encoding" value="cp850"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="MainTest" name="testMain" time="0"/>
+  <testcase classname="GUITest" name="testGUI" time="0.177"/>
+  <testcase classname="GUITest" name="testHit" time="0.003"/>
+  <testcase classname="GUITest" name="testBulk2" time="0.002"/>
+  <testcase classname="GUITest" name="testBulk3" time="0.001"/>
+  <testcase classname="GUITest" name="testFlag2" time="0.002"/>
+  <testcase classname="GUITest" name="testBulk" time="0.001"/>
+  <testcase classname="GUITest" name="testFlag" time="0.002"/>
+  <testcase classname="GUITest" name="testHit2" time="0.001"/>
+  <testcase classname="GUITest" name="testHit3" time="0.001"/>
+  <testcase classname="GUITest" name="testHit4" time="0.001"/>
+  <testcase classname="GUITest" name="testFlagAllBombs" time="0.001"/>
+  <testcase classname="GUITest" name="testCheckVictory2" time="0.002"/>
+  <testcase classname="GUITest" name="testCheckVictory3" time="0.001"/>
+  <testcase classname="GUITest" name="testCheckVictory" time="0.001"/>
 </testsuite>

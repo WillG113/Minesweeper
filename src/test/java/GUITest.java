@@ -1,9 +1,12 @@
-import org.junit.jupiter.api.*;
-import javax.swing.*;
-import java.awt.*;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import javax.swing.JButton;
+import java.awt.Color;
 
 
 public class GUITest {
+
+
 
     GUI test = new GUI(3,3);
 
