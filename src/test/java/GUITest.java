@@ -1,17 +1,19 @@
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JButton;
-import java.awt.Color;
 
 public class GUITest {
 
     GUI test = new GUI(3,3);
 
+
+
     @Test
     public void testGUI() {
-        //Test that arrays are initialised
         test.startGame();
+
+        //Test that arrays are initialised
 
         Assertions.assertEquals(3, test.getGameBoard().getBoard().length);
         Assertions.assertEquals(3, test.getButtonArray().length);

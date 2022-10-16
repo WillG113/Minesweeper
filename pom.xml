@@ -52,6 +52,7 @@
                     <excludes>
                         <exclude>**/GUI.class</exclude>
                         <exclude>**/*GUI.*</exclude>
+                        <exclude>**/*GUITest.*</exclude>
                         <exclude>**/config/*</exclude>
                     </excludes>
                 </configuration>
