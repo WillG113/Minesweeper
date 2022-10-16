@@ -1,7 +1,6 @@
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import javax.swing.JButton;
-import java.awt.Color;
+import org.junit.jupiter.api.*;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class GUITest {
@@ -11,7 +10,6 @@ public class GUITest {
     GUI test = new GUI(3,3);
 
     public void before() {
-        System.setProperty("java.awt.headless", "true");
         test.startGame();
     }
 
