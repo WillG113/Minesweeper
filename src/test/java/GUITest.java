@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.*;
-import javax.swing.*;
-import java.awt.*;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import javax.swing.JButton;
+import java.awt.Color;
 
 
 public class GUITest {
@@ -9,12 +10,14 @@ public class GUITest {
 
     GUI test = new GUI(3,3);
 
-
+    public void before() {
+        System.setProperty("java.awt.headless", "true");
+        test.startGame();
+    }
 
     @Test
     public void testGUI() {
-        test.startGame();
-
+        before();
         //Test that arrays are initialised
 
         Assertions.assertEquals(3, test.getGameBoard().getBoard().length);
@@ -23,7 +26,7 @@ public class GUITest {
 
     @Test
     public void testHit() {
-        test.startGame();
+        before();
 
         JButton testButton = test.getButtonArray()[0][0];
 
@@ -41,7 +44,7 @@ public class GUITest {
 
     @Test
     public void testHit2() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -60,7 +63,7 @@ public class GUITest {
 
     @Test
     public void testHit3() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -82,7 +85,7 @@ public class GUITest {
 
     @Test
     public void testHit4() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -104,7 +107,8 @@ public class GUITest {
 
     @Test
     public void testFlag() {
-        test.startGame();
+        before();
+
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
         Assertions.assertTrue(test.getGameBoard().getBoard()[0][0].isFlagged());
@@ -114,7 +118,7 @@ public class GUITest {
 
     @Test
     public void testFlag2() {
-        test.startGame();
+        before();
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
         Assertions.assertTrue(test.getGameBoard().getBoard()[0][0].isFlagged());
@@ -126,7 +130,7 @@ public class GUITest {
 
     @Test
     public void testFlagAllBombs() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -157,7 +161,7 @@ public class GUITest {
 
     @Test
     public void testCheckVictory() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -179,7 +183,7 @@ public class GUITest {
 
     @Test
     public void testCheckVictory2() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -206,7 +210,7 @@ public class GUITest {
 
     @Test
     public void testCheckVictory3() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -226,7 +230,7 @@ public class GUITest {
 
     @Test
     public void testBulk() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -246,7 +250,7 @@ public class GUITest {
 
     @Test
     public void testBulk2() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
@@ -266,7 +270,7 @@ public class GUITest {
 
     @Test
     public void testBulk3() {
-        test.startGame();
+        before();
 
         for (int i = 0; i <= 2; i++){
             for (int j = 0; j <= 2; j++) {
