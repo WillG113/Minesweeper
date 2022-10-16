@@ -1,13 +1,15 @@
-import org.junit.jupiter.api.*;
-import javax.swing.*;
-import java.awt.*;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+import javax.swing.JButton;
+import java.awt.Color;
 
 public class GUITest {
 
     GUI test = new GUI(3,3);
 
     @Test
-    void testGUI() {
+    public void testGUI() {
         //Test that arrays are initialised
         test.startGame();
 
@@ -16,7 +18,7 @@ public class GUITest {
     }
 
     @Test
-    void testHit() {
+    public void testHit() {
         test.startGame();
 
         JButton testButton = test.getButtonArray()[0][0];
@@ -34,7 +36,7 @@ public class GUITest {
     }
 
     @Test
-    void testHit2() {
+    public void testHit2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -53,7 +55,7 @@ public class GUITest {
     }
 
     @Test
-    void testHit3() {
+    public void testHit3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -75,7 +77,7 @@ public class GUITest {
     }
 
     @Test
-    void testHit4() {
+    public void testHit4() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -97,7 +99,7 @@ public class GUITest {
     }
 
     @Test
-    void testFlag() {
+    public void testFlag() {
         test.startGame();
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
@@ -107,7 +109,7 @@ public class GUITest {
     }
 
     @Test
-    void testFlag2() {
+    public void testFlag2() {
         test.startGame();
         JButton testButton = test.getButtonArray()[0][0];
         test.flag(testButton, 0, 0);
@@ -119,7 +121,7 @@ public class GUITest {
     }
 
     @Test
-    void testFlagAllBombs() {
+    public void testFlagAllBombs() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -150,7 +152,7 @@ public class GUITest {
     }
 
     @Test
-    void testCheckVictory() {
+    public void testCheckVictory() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -172,7 +174,7 @@ public class GUITest {
     }
 
     @Test
-    void testCheckVictory2() {
+    public void testCheckVictory2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -199,7 +201,7 @@ public class GUITest {
     }
 
     @Test
-    void testCheckVictory3() {
+    public void testCheckVictory3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -219,7 +221,7 @@ public class GUITest {
     }
 
     @Test
-    void testBulk() {
+    public void testBulk() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -239,7 +241,7 @@ public class GUITest {
     }
 
     @Test
-    void testBulk2() {
+    public void testBulk2() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
@@ -259,7 +261,7 @@ public class GUITest {
     }
 
     @Test
-    void testBulk3() {
+    public void testBulk3() {
         test.startGame();
 
         for (int i = 0; i <= 2; i++){
