@@ -1,7 +1,6 @@
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import javax.swing.JButton;
-import java.awt.Color;
+import org.junit.jupiter.api.*;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class GUITest {

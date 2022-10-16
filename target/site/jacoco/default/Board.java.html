@@ -65,8 +65,8 @@ public class Board {
 
     public void hit(int x, int y, boolean bulk) {
 <span class="fc bfc" id="L67" title="All 2 branches covered.">        if(this.gameBoard[x][y].isClear()){</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">            if(!bulk) {</span>
-<span class="fc" id="L69">                System.out.println(&quot;Already clear&quot;);</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">            if(!bulk) {</span>
+<span class="nc" id="L69">                System.out.println(&quot;Already clear&quot;);</span>
             }
 <span class="fc bfc" id="L71" title="All 2 branches covered.">        } else if (this.gameBoard[x][y].isFlagged()){</span>
 <span class="fc bfc" id="L72" title="All 2 branches covered.">            if(!bulk) {</span>
@@ -152,15 +152,15 @@ public class Board {
 
     public void setFlag(Tile target){
 <span class="fc bfc" id="L154" title="All 2 branches covered.">        if(!target.isClear()){</span>
-<span class="fc bfc" id="L155" title="All 2 branches covered.">            if(!target.isFlagged()){</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">            if(!target.isFlagged()){</span>
 <span class="fc" id="L156">                target.setFlagged();</span>
 <span class="fc bfc" id="L157" title="All 2 branches covered.">                if (target.checkBomb()) {</span>
 <span class="fc" id="L158">                    bombsFlagged++;</span>
 <span class="fc" id="L159">                    checkVictory();</span>
                 }
             } else {
-<span class="fc" id="L162">                target.setFlagged();</span>
-<span class="pc bpc" id="L163" title="1 of 2 branches missed.">                if (target.checkBomb()) {</span>
+<span class="nc" id="L162">                target.setFlagged();</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">                if (target.checkBomb()) {</span>
 <span class="nc" id="L164">                    bombsFlagged--;</span>
                 }
             }
@@ -192,12 +192,12 @@ public class Board {
     }
 
     public int victoryState() {
-<span class="pc bpc" id="L195" title="1 of 4 branches missed.">        if(gameOver &amp;&amp; this.bombsFlagged == (x*y)/8 + 1){</span>
-<span class="fc" id="L196">            return 1;</span>
-<span class="pc bpc" id="L197" title="1 of 4 branches missed.">        } else if (gameOver &amp;&amp; tilesCleared == ((x*y) - ((x*y)/8)) - 1) {</span>
-<span class="fc" id="L198">            return 2;</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">        if(gameOver &amp;&amp; this.bombsFlagged == (x*y)/8 + 1){</span>
+<span class="nc" id="L196">            return 1;</span>
+<span class="nc bnc" id="L197" title="All 4 branches missed.">        } else if (gameOver &amp;&amp; tilesCleared == ((x*y) - ((x*y)/8)) - 1) {</span>
+<span class="nc" id="L198">            return 2;</span>
         } else {
-<span class="fc" id="L200">            return 3;</span>
+<span class="nc" id="L200">            return 3;</span>
         }
     }
 
