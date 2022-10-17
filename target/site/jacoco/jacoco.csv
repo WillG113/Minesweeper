@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-newMinesweeper,default,Board,150,984,35,113,36,117,27,66,1,17
-newMinesweeper,default,GUI.new MouseListener() {...},51,15,6,0,11,1,8,1,5,1
+newMinesweeper,default,Board,208,926,44,104,45,108,32,61,2,16
+newMinesweeper,default,GUI.new MouseListener() {...},66,0,6,0,12,0,9,0,6,0
 newMinesweeper,default,Tile,0,207,1,9,0,59,1,36,0,32
-newMinesweeper,default,GUI,11,711,8,64,6,107,10,39,2,11
+newMinesweeper,default,GUI,722,0,72,0,113,0,49,0,13,0
 newMinesweeper,default,Main,312,0,50,0,73,0,29,0,4,0
