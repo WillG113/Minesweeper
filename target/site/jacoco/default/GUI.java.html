@@ -7,74 +7,74 @@ import static java.awt.BorderLayout.*;
 
 public class GUI extends JFrame {
     private JButton restartButton;
-<span class="nc" id="L10">    private final JLabel winLabel = new JLabel(&quot;&quot;);</span>
+    private final JLabel winLabel = new JLabel(&quot;&quot;);
     private Board gameBoard;
     private JButton[][] buttonArray;
     private int x;
     private int y;
 
 
-<span class="nc" id="L17">    public GUI(int x, int y) {</span>
-<span class="nc" id="L18">        this.x = x;</span>
-<span class="nc" id="L19">        this.y = y;</span>
-<span class="nc" id="L20">    }</span>
+    public GUI(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public Board getGameBoard() {
-<span class="nc" id="L23">        return gameBoard;</span>
+        return gameBoard;
     }
 
     public JButton[][] getButtonArray() {
-<span class="nc" id="L27">        return buttonArray;</span>
+        return buttonArray;
     }
 
-<span class="nc" id="L30">    public JLabel getWinLabel() { return winLabel; }</span>
+    public JLabel getWinLabel() { return winLabel; }
 
     public void startGame() {
-<span class="nc" id="L33">            gameBoard = new Board(x, y);</span>
-<span class="nc" id="L34">            gameBoard.createBoard();</span>
+            gameBoard = new Board(x, y);
+            gameBoard.createBoard();
 
-<span class="nc" id="L36">            Container panel = getContentPane();</span>
+            Container panel = getContentPane();
 
-<span class="nc" id="L38">            Container buttonPane = new Container();</span>
-<span class="nc" id="L39">            buttonPane.setLayout(new GridLayout(x, y));</span>
+            Container buttonPane = new Container();
+            buttonPane.setLayout(new GridLayout(x, y));
 
-<span class="nc" id="L41">            Container labelContainer = new Container();</span>
-<span class="nc" id="L42">            labelContainer.setLayout(new BorderLayout());</span>
+            Container labelContainer = new Container();
+            labelContainer.setLayout(new BorderLayout());
 
-<span class="nc" id="L44">            JLabel label= new JLabel(&quot;Minesweeper&quot;);</span>
-<span class="nc" id="L45">            label.setHorizontalAlignment(JLabel.CENTER);</span>
-<span class="nc" id="L46">            label.setFont(new Font(&quot;Serif&quot;, Font.BOLD, 30));</span>
-<span class="nc" id="L47">            labelContainer.add(label, PAGE_START);</span>
+            JLabel label= new JLabel(&quot;Minesweeper&quot;);
+            label.setHorizontalAlignment(JLabel.CENTER);
+            label.setFont(new Font(&quot;Serif&quot;, Font.BOLD, 30));
+            labelContainer.add(label, PAGE_START);
 
-<span class="nc" id="L49">            winLabel.setText(&quot;&quot;);</span>
-<span class="nc" id="L50">            winLabel.setHorizontalAlignment(JLabel.CENTER);</span>
-<span class="nc" id="L51">            labelContainer.add(winLabel, PAGE_END);</span>
+            winLabel.setText(&quot;&quot;);
+            winLabel.setHorizontalAlignment(JLabel.CENTER);
+            labelContainer.add(winLabel, PAGE_END);
 
-<span class="nc" id="L53">            panel.add(labelContainer, PAGE_START);</span>
+            panel.add(labelContainer, PAGE_START);
 
-<span class="nc" id="L55">            restartButton = new JButton(&quot;Restart&quot;);</span>
-<span class="nc" id="L56">            restartButton.addActionListener(e -&gt; {</span>
-<span class="nc" id="L57">                resetGame();</span>
-<span class="nc" id="L58">                startGame();</span>
-<span class="nc" id="L59">            });</span>
+            restartButton = new JButton(&quot;Restart&quot;);
+            restartButton.addActionListener(e -&gt; {
+                resetGame();
+                startGame();
+            });
 
-<span class="nc" id="L61">            buttonArray = new JButton[gameBoard.getX()][gameBoard.getX()];</span>
+            buttonArray = new JButton[gameBoard.getX()][gameBoard.getX()];
 
-<span class="nc bnc" id="L63" title="All 2 branches missed.">            for (int i = 0; i &lt; gameBoard.getX(); i++) {</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">                for (int j = 0; j &lt; gameBoard.getX(); j++) {</span>
-<span class="nc" id="L65">                    buttonArray[i][j] = new JButton(&quot;.&quot;);</span>
+            for (int i = 0; i &lt; gameBoard.getX(); i++) {
+                for (int j = 0; j &lt; gameBoard.getX(); j++) {
+                    buttonArray[i][j] = new JButton(&quot;.&quot;);
                 }
             }
 
-<span class="nc" id="L69">            int j = 0;</span>
-<span class="nc" id="L70">            int k = 0;</span>
+            int j = 0;
+            int k = 0;
 
-<span class="nc bnc" id="L72" title="All 2 branches missed.">            for (int i = 0; i &lt; (gameBoard.getX() * gameBoard.getX()); i++) {</span>
-<span class="nc" id="L73">                int l = j;</span>
-<span class="nc" id="L74">                int m = k;</span>
-<span class="nc" id="L75">                JButton button = buttonArray[l][m];</span>
-<span class="nc" id="L76">                button.setBackground(Color.BLACK);</span>
-<span class="nc" id="L77">                button.setForeground(Color.WHITE);</span>
+            for (int i = 0; i &lt; (gameBoard.getX() * gameBoard.getX()); i++) {
+                int l = j;
+                int m = k;
+                JButton button = buttonArray[l][m];
+                button.setBackground(Color.BLACK);
+                button.setForeground(Color.WHITE);
 
 <span class="nc" id="L79">                button.addMouseListener(new MouseListener() {</span>
 
@@ -115,121 +115,121 @@ public class GUI extends JFrame {
                         //NOT NEEDED
 <span class="nc" id="L116">                    }</span>
                 });
-<span class="nc" id="L118">                buttonPane.add(button);</span>
+                buttonPane.add(button);
 
-<span class="nc" id="L120">                k++;</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">                if (k == gameBoard.getX()) {</span>
-<span class="nc" id="L122">                    k = 0;</span>
-<span class="nc" id="L123">                    j++;</span>
+                k++;
+                if (k == gameBoard.getX()) {
+                    k = 0;
+                    j++;
                 }
             }
 
-<span class="nc" id="L127">            panel.add(buttonPane, javax.swing.SwingConstants.CENTER);</span>
-<span class="nc" id="L128">            panel.add(restartButton, PAGE_END);</span>
-<span class="nc" id="L129">            restartButton.setVisible(false);</span>
-<span class="nc" id="L130">        }</span>
+            panel.add(buttonPane, javax.swing.SwingConstants.CENTER);
+            panel.add(restartButton, PAGE_END);
+            restartButton.setVisible(false);
+        }
 
         public void resetGame(){
-<span class="nc" id="L133">            Container panel = getContentPane();</span>
-<span class="nc" id="L134">            panel.removeAll();</span>
-<span class="nc" id="L135">        }</span>
+            Container panel = getContentPane();
+            panel.removeAll();
+        }
 
 
         public void hit(JButton button, int l, int m, Board gameBoard, JButton[][] buttonArray){
-<span class="nc" id="L139">            button.setBackground(Color.GRAY);</span>
-<span class="nc" id="L140">            button.setForeground(Color.BLACK);</span>
+            button.setBackground(Color.GRAY);
+            button.setForeground(Color.BLACK);
 
-<span class="nc" id="L142">            gameBoard.hit(l, m, false);</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">            if (gameBoard.getBoard()[l][m].checkBomb()) {</span>
-<span class="nc" id="L144">                button.setBackground(Color.RED);</span>
-<span class="nc" id="L145">                button.setForeground(Color.BLACK);</span>
-<span class="nc bnc" id="L146" title="All 2 branches missed.">            } else if (gameBoard.getBoard()[l][m].getTouching() == 0) {</span>
-<span class="nc" id="L147">                button.setText(&quot;&quot;);</span>
-<span class="nc" id="L148">                recursion(l, m, buttonArray, gameBoard);</span>
+            gameBoard.hit(l, m, false);
+            if (gameBoard.getBoard()[l][m].checkBomb()) {
+                button.setBackground(Color.RED);
+                button.setForeground(Color.BLACK);
+            } else if (gameBoard.getBoard()[l][m].getTouching() == 0) {
+                button.setText(&quot;&quot;);
+                recursion(l, m, buttonArray, gameBoard);
             } else {
-<span class="nc" id="L150">                button.setText(Integer.toString(gameBoard.getBoard()[l][m].getTouching()));</span>
+                button.setText(Integer.toString(gameBoard.getBoard()[l][m].getTouching()));
             }
-<span class="nc" id="L152">            checkVictory(buttonArray, gameBoard);</span>
-<span class="nc" id="L153">        }</span>
+            checkVictory(buttonArray, gameBoard);
+        }
 
         public void flag(JButton button, int l, int m) {
-<span class="nc" id="L156">            gameBoard.setFlag(gameBoard.getBoard()[l][m]);</span>
-<span class="nc bnc" id="L157" title="All 2 branches missed.">            if (!gameBoard.getBoard()[l][m].isClear()) {</span>
-<span class="nc bnc" id="L158" title="All 2 branches missed.">                if (gameBoard.getBoard()[l][m].isFlagged()) {</span>
-<span class="nc" id="L159">                    button.setBackground(Color.YELLOW);</span>
-<span class="nc" id="L160">                    button.setForeground(Color.BLACK);</span>
-<span class="nc" id="L161">                    button.setText(&quot;F&quot;);</span>
+            gameBoard.setFlag(gameBoard.getBoard()[l][m]);
+            if (!gameBoard.getBoard()[l][m].isClear()) {
+                if (gameBoard.getBoard()[l][m].isFlagged()) {
+                    button.setBackground(Color.YELLOW);
+                    button.setForeground(Color.BLACK);
+                    button.setText(&quot;F&quot;);
                 } else {
-<span class="nc" id="L163">                    button.setBackground(Color.BLACK);</span>
-<span class="nc" id="L164">                    button.setForeground(Color.WHITE);</span>
-<span class="nc" id="L165">                    button.setText(&quot;.&quot;);</span>
+                    button.setBackground(Color.BLACK);
+                    button.setForeground(Color.WHITE);
+                    button.setText(&quot;.&quot;);
                 }
-<span class="nc" id="L167">                checkVictory(buttonArray, gameBoard);</span>
+                checkVictory(buttonArray, gameBoard);
             }
-<span class="nc" id="L169">        }</span>
+        }
 
         public void recursion(int l, int m, JButton[][] buttonArray, Board test){
-<span class="nc bnc" id="L172" title="All 2 branches missed.">            for(int i = -1; i &lt;= 1; i++) {</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">                for(int j = -1; j &lt;= 1; j++) {</span>
-<span class="nc bnc" id="L174" title="All 8 branches missed.">                    if(l+j &gt;= 0 &amp;&amp; m+i &lt; test.getX() &amp;&amp; m+i &gt;= 0 &amp;&amp; j+l &lt; test.getX()) {</span>
-<span class="nc bnc" id="L175" title="All 8 branches missed.">                        if(!buttonArray[l+j][m+i].getText().equals(&quot;&quot;) &amp;&amp; test.getBoard()[l+j][m+i].getTouching() == 0 &amp;&amp; !test.getBoard()[l+j][m+i].checkBomb()  &amp;&amp; !test.getBoard()[l+j][m+i].isFlagged()) {</span>
-<span class="nc" id="L176">                            buttonArray[l + j][m + i].setText(&quot;&quot;);</span>
-<span class="nc" id="L177">                            buttonArray[l + j][m + i].setBackground(Color.GRAY);</span>
-<span class="nc" id="L178">                            buttonArray[l + j][m + i].setForeground(Color.BLACK);</span>
+            for(int i = -1; i &lt;= 1; i++) {
+                for(int j = -1; j &lt;= 1; j++) {
+                    if(l+j &gt;= 0 &amp;&amp; m+i &lt; test.getX() &amp;&amp; m+i &gt;= 0 &amp;&amp; j+l &lt; test.getX()) {
+                        if(!buttonArray[l+j][m+i].getText().equals(&quot;&quot;) &amp;&amp; test.getBoard()[l+j][m+i].getTouching() == 0 &amp;&amp; !test.getBoard()[l+j][m+i].checkBomb()  &amp;&amp; !test.getBoard()[l+j][m+i].isFlagged()) {
+                            buttonArray[l + j][m + i].setText(&quot;&quot;);
+                            buttonArray[l + j][m + i].setBackground(Color.GRAY);
+                            buttonArray[l + j][m + i].setForeground(Color.BLACK);
                             //buttonArray[l + j][m + i].setEnabled(false);
-<span class="nc" id="L180">                            recursion(l + j, m + i, buttonArray, test);</span>
-<span class="nc bnc" id="L181" title="All 8 branches missed.">                        } else if (!buttonArray[l+j][m+i].getText().equals(&quot;&quot;) &amp;&amp; test.getBoard()[l+j][m+i].getTouching() &gt; 0 &amp;&amp; !test.getBoard()[l+j][m+i].checkBomb() &amp;&amp; !test.getBoard()[l+j][m+i].isFlagged()) {</span>
-<span class="nc" id="L182">                            buttonArray[l + j][m + i].setBackground(Color.GRAY);</span>
-<span class="nc" id="L183">                            buttonArray[l + j][m + i].setForeground(Color.BLACK);</span>
+                            recursion(l + j, m + i, buttonArray, test);
+                        } else if (!buttonArray[l+j][m+i].getText().equals(&quot;&quot;) &amp;&amp; test.getBoard()[l+j][m+i].getTouching() &gt; 0 &amp;&amp; !test.getBoard()[l+j][m+i].checkBomb() &amp;&amp; !test.getBoard()[l+j][m+i].isFlagged()) {
+                            buttonArray[l + j][m + i].setBackground(Color.GRAY);
+                            buttonArray[l + j][m + i].setForeground(Color.BLACK);
                             //buttonArray[l + j][m + i].setEnabled(false);
-<span class="nc" id="L185">                            buttonArray[l + j][m + i].setText(Integer.toString(test.getBoard()[l+j][m+i].getTouching()));</span>
+                            buttonArray[l + j][m + i].setText(Integer.toString(test.getBoard()[l+j][m+i].getTouching()));
                         }
                     }
                 }
             }
-<span class="nc" id="L190">        }</span>
+        }
 
         public void flagAllBombs(JButton[][] buttonArray, Board gameBoard) {
-<span class="nc bnc" id="L193" title="All 2 branches missed.">            for(int i = 0; i &lt; gameBoard.getX(); i++) {</span>
-<span class="nc bnc" id="L194" title="All 2 branches missed.">                for(int j = 0; j &lt; gameBoard.getX(); j++) {</span>
-<span class="nc bnc" id="L195" title="All 2 branches missed.">                    if(gameBoard.getBoard()[i][j].checkBomb()) {</span>
-<span class="nc" id="L196">                        buttonArray[i][j].setBackground(Color.RED);</span>
-<span class="nc" id="L197">                        buttonArray[i][j].setForeground(Color.BLACK);</span>
+            for(int i = 0; i &lt; gameBoard.getX(); i++) {
+                for(int j = 0; j &lt; gameBoard.getX(); j++) {
+                    if(gameBoard.getBoard()[i][j].checkBomb()) {
+                        buttonArray[i][j].setBackground(Color.RED);
+                        buttonArray[i][j].setForeground(Color.BLACK);
                     }
                 }
             }
-<span class="nc" id="L201">        }</span>
+        }
 
         public void checkVictory(JButton[][] buttonArray, Board gameBoard) {
-<span class="nc" id="L204">            gameBoard.checkVictory();</span>
-<span class="nc bnc" id="L205" title="All 2 branches missed.">            if(gameBoard.getGameOver()){</span>
-<span class="nc bnc" id="L206" title="All 2 branches missed.">                if(gameBoard.victoryState() == 1) {</span>
-<span class="nc" id="L207">                    winLabel.setText(&quot;YOU WON! YOU FLAGGED THE MINES&quot;);</span>
-<span class="nc bnc" id="L208" title="All 2 branches missed.">                } else if (gameBoard.victoryState() == 2) {</span>
-<span class="nc" id="L209">                    winLabel.setText(&quot;YOU WON! YOU CLEARED ALL THE TILES&quot;);</span>
+            gameBoard.checkVictory();
+            if(gameBoard.getGameOver()){
+                if(gameBoard.victoryState() == 1) {
+                    winLabel.setText(&quot;YOU WON! YOU FLAGGED THE MINES&quot;);
+                } else if (gameBoard.victoryState() == 2) {
+                    winLabel.setText(&quot;YOU WON! YOU CLEARED ALL THE TILES&quot;);
                 } else {
-<span class="nc" id="L211">                    gameBoard.flagAllBombs();</span>
-<span class="nc" id="L212">                    flagAllBombs(buttonArray, gameBoard);</span>
-<span class="nc" id="L213">                    winLabel.setText(&quot;YOU LOST!&quot;);</span>
+                    gameBoard.flagAllBombs();
+                    flagAllBombs(buttonArray, gameBoard);
+                    winLabel.setText(&quot;YOU LOST!&quot;);
                 }
-<span class="nc" id="L215">                restartButton.setVisible(true);</span>
+                restartButton.setVisible(true);
             }
-<span class="nc" id="L217">        }</span>
+        }
 
 
         public void bulkHit(int l, int m, JButton[][] buttonArray, Board gameBoard){
-<span class="nc bnc" id="L221" title="All 2 branches missed.">            for(int i = -1; i &lt;= 1; i++) {</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">                for(int j = -1; j &lt;= 1; j++) {</span>
-<span class="nc bnc" id="L223" title="All 8 branches missed.">                    if(l+j &gt;= 0 &amp;&amp; l+j &lt; gameBoard.getX() &amp;&amp; m+i &gt;= 0 &amp;&amp; m+i &lt; gameBoard.getX()) {</span>
-<span class="nc bnc" id="L224" title="All 4 branches missed.">                        if(!buttonArray[l+j][m+i].getText().equals(&quot;F&quot;) &amp;&amp; !gameBoard.getBoard()[l+j][m+i].isClear()) {</span>
-<span class="nc" id="L225">                            hit(buttonArray[l+j][m+i], l+j, m+i, gameBoard, buttonArray);</span>
+            for(int i = -1; i &lt;= 1; i++) {
+                for(int j = -1; j &lt;= 1; j++) {
+                    if(l+j &gt;= 0 &amp;&amp; l+j &lt; gameBoard.getX() &amp;&amp; m+i &gt;= 0 &amp;&amp; m+i &lt; gameBoard.getX()) {
+                        if(!buttonArray[l+j][m+i].getText().equals(&quot;F&quot;) &amp;&amp; !gameBoard.getBoard()[l+j][m+i].isClear()) {
+                            hit(buttonArray[l+j][m+i], l+j, m+i, gameBoard, buttonArray);
                         }
 
-<span class="nc" id="L228">                        checkVictory(buttonArray, gameBoard);</span>
+                        checkVictory(buttonArray, gameBoard);
                     }
                 }
             }
-<span class="nc" id="L232">        }</span>
+        }
     }
 
 
